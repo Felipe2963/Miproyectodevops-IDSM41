@@ -51,3 +51,25 @@ mostrar el conflicto sin duplicarlo. Quitar la asignación debe dejar la lista v
 
 La rama es `feature/responsables`, creada desde `develop`. El PR debe apuntar a
 `develop` y mencionar `Closes #6`. El merge corresponde a la profesora.
+
+## Prueba de integración con MySQL real
+
+Se validó con MySQL 8.4.13: 17 comprobaciones aprobadas, incluyendo autenticación,
+asignación, consulta, cambio, persistencia, varios responsables, restricciones de
+duplicados, eliminación y aislamiento entre propietarios.
+
+La prueba reproducible está en `tests/integration/responsables.mysql.js`.
+Requiere una instancia de MySQL y una cuenta con permiso para crear el esquema.
+Por seguridad, `DB_NAME` debe terminar en `_test`; no usar una base de producción.
+El script carga `database/schema.sql` y elimina los registros que crea al finalizar.
+No se ejecuta durante `npm test` para mantener las pruebas unitarias independientes
+de MySQL. Ejemplo en PowerShell con una instancia de prueba en el puerto 13316:
+
+```powershell
+$env:DB_HOST = '127.0.0.1'
+$env:DB_PORT = '13316'
+$env:DB_USER = 'root'
+$env:DB_PASSWORD = '' # Ajustar a la instancia de prueba.
+$env:DB_NAME = 'responsables_issue6_test'
+node tests/integration/responsables.mysql.js
+```

@@ -36,11 +36,10 @@ formulario.addEventListener('submit', async event => {
             return;
         }
 
-        formulario.reset();
-        formulario.hidden = true;
+       formulario.reset();
         mensaje.className = 'exito';
-        mensaje.textContent =
-            `Bienvenido, ${datos.usuario.nombre}. Tu sesión está activa.`;
+        mensaje.textContent =`Bienvenido, ${datos.usuario.nombre}. Redirigiendo...`;
+        window.location.replace('/projects');
     } catch {
         mensaje.className = 'error';
         mensaje.textContent =

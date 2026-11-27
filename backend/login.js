@@ -1,23 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
-const { randomBytes } = require('node:crypto');
 const pool = require('../database/connection');
 
 const router = express.Router();
-
-router.use(session({
-    name: 'devops.sid',
-    secret: process.env.SESSION_SECRET || randomBytes(32).toString('hex'),
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 60 * 1000
-    }
-}));
 
 router.use((req, res, next) => {
     res.set('Cache-Control', 'no-store');

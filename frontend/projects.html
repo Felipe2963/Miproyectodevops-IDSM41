@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de proyectos | MyProyectoDevOps</title>
+    <link rel="stylesheet" href="/assets/projects.css">
+    <script src="/assets/projects.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <div>
+        <h1>MyProyectoDevOps</h1>
+        <p>Administración de proyectos</p>
+    </div>
+    <a href="/login/" class="link-login">Inicio</a>
+</header>
+
+<main class="container">
+
+    <section class="panel">
+        <h2 id="form-title">Crear proyecto</h2>
+
+        <form id="project-form">
+            <input type="hidden" id="project-id">
+
+            <label for="nombre">Nombre del proyecto</label>
+            <input type="text" id="nombre" maxlength="150" required>
+
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" rows="3"></textarea>
+
+            <label for="estado">Estado</label>
+            <select id="estado">
+                <option value="pendiente">Pendiente</option>
+                <option value="activo">Activo</option>
+                <option value="finalizado">Finalizado</option>
+            </select>
+
+            <label for="fecha_inicio">Fecha de inicio</label>
+            <input type="date" id="fecha_inicio">
+
+            <label for="fecha_fin">Fecha de finalización</label>
+            <input type="date" id="fecha_fin">
+
+            <div class="buttons">
+                <button type="submit" id="save-button">
+                    Guardar proyecto
+                </button>
+                <button type="reset" class="secondary">
+                    Limpiar
+                </button>
+            </div>
+        </form>
+
+        <p id="mensaje" role="status"></p>
+    </section>
+
+    <section class="panel">
+        <h2>Proyectos registrados</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                        <th>Inicio</th>
+                        <th>Finalización</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="projects-table">
+                    <tr>
+                        <td colspan="6">Cargando proyectos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<dialog id="details-dialog">
+    <h2>Detalles del proyecto</h2>
+    <div id="details-content"></div>
+    <button type="button" id="close-dialog">Cerrar</button>
+</dialog>
+
+</body>
+</html>

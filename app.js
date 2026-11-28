@@ -4,6 +4,7 @@ const path = require('node:path');
 
 const loginRouter = require('./backend/login');
 const projectsRouter = require('./backend/projects');
+const tasksRouter = require('./backend/tasks');
 const sessionMiddleware = require('./backend/session');
 
 const app = express();
@@ -21,6 +22,9 @@ app.use('/api/auth', loginRouter);
 
 // Rutas de proyectos
 app.use('/api/proyectos', projectsRouter);
+
+//Rutas de tareas
+app.use('/api/tareas', tasksRouter);
 
 // Archivos del Login
 app.use('/login', express.static(frontendPath));

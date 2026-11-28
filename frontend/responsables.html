@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsables | MyProyectoDevOps</title>
+    <link rel="stylesheet" href="/assets/projects.css">
+    <link rel="stylesheet" href="/assets/responsables.css">
+    <script src="/assets/responsables.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div><h1>MyProyectoDevOps</h1><p>Asignación de responsables</p></div>
+        <a href="/projects" class="link-login">Proyectos</a>
+    </header>
+    <main class="container">
+        <section class="panel">
+            <h2>Responsables de tareas</h2>
+            <p>Selecciona una tarea de tus proyectos para consultar y administrar sus responsables.</p>
+            <form id="responsables-form">
+                <label for="tarea">Tarea</label>
+                <select id="tarea" required disabled><option value="">Cargando tareas...</option></select>
+                <label for="usuario">Usuario</label>
+                <select id="usuario" required disabled><option value="">Cargando usuarios...</option></select>
+                <div class="buttons">
+                    <button id="guardar" disabled>Asignar responsable</button>
+                    <button id="cancelar" type="button" class="secondary" hidden>Cancelar cambio</button>
+                </div>
+            </form>
+            <p id="mensaje" role="status" aria-live="polite"></p>
+        </section>
+        <section class="panel">
+            <h2>Responsables asignados</h2>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Usuario</th><th>Fecha de asignación</th><th>Acciones</th></tr></thead>
+                    <tbody id="asignaciones"><tr><td colspan="3">Selecciona una tarea.</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

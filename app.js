@@ -4,6 +4,7 @@ const path = require('node:path');
 
 const loginRouter = require('./backend/login');
 const projectsRouter = require('./backend/projects');
+const responsablesRouter = require('./backend/responsables');
 const tasksRouter = require('./backend/tasks');
 const sessionMiddleware = require('./backend/session');
 
@@ -22,6 +23,12 @@ app.use('/api/auth', loginRouter);
 
 // Rutas de proyectos
 app.use('/api/proyectos', projectsRouter);
+app.use('/api/responsables', responsablesRouter);
+
+app.get('/responsables', (req, res) => {
+    if (!req.session?.usuario) return res.redirect('/login/');
+    res.sendFile(path.join(frontendPath, 'responsables.html'));
+});
 
 //Rutas de tareas
 app.use('/api/tareas', tasksRouter);
